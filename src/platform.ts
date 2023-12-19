@@ -1,14 +1,14 @@
 import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic } from 'homebridge';
 
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
-import { ExamplePlatformAccessory } from './platformAccessory';
+import { AtombergPlatformAccessory } from './platformAccessory';
 
 /**
  * HomebridgePlatform
  * This class is the main constructor for your plugin, this is where you should
  * parse the user config and discover/register accessories with Homebridge.
  */
-export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
+export class AtombergHomebridgePlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
   public readonly Characteristic: typeof Characteristic = this.api.hap.Characteristic;
 
@@ -54,27 +54,58 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     // EXAMPLE ONLY
     // A real plugin you would discover accessories from the local network, cloud services
     // or a user-defined array in the platform config.
-    const exampleDevices = [
+    const fans = [
       {
-        exampleUniqueId: 'ABCD',
-        exampleDisplayName: 'Bedroom',
+        name: 'office_fan',
+        displayName: 'Office Fan',
+        room: 'Office Room',
+        ipAddress: '192.168.0.130',
+        onCode: '6k7YIXymYAyHEz7623jyRKSSUasCK7K7BLHjjBmf5Ymt6TB55xQ2W5objJbfzhUcuW+eKjhqV12galP6',
+        offCode:'50hGBamtsr6siOc6NnXFLv2U/n0QCDFqUK9DZNCHvWCJdaD9N+RD0ZdX8yOTsTDAcd3spP5q6tz9JKlX'
       },
       {
-        exampleUniqueId: 'EFGH',
-        exampleDisplayName: 'Kitchen',
+        name: 'nonu_fan',
+        displayName: 'Nonu Bedroom Fan',
+        room: 'Nonu Bedroom',
+        ipAddress: '192.168.0.136',
+        onCode: 'Jmlu57pzGTgX9X3xbpZt6n2bmyTDdV4dDq2vCBW3WNBmzhdCSs8RWBsqiv0YyK2wf9lmLigyGDuudOu+',
+        offCode:'fM3SJ3B1jWm8332Ww3btwQMituSX3x9EFWvesok4JYBSXy9Fg2JHXWu6HkKSHDhhK2FKROLWFc14yqQi'
       },
+      {
+        name: 'master_br_fan',
+        displayName: 'Master Bedroom Fan',
+        room: 'Master Bedroom',
+        ipAddress: '192.168.0.172',
+        onCode: 'qMcAkERzlz0czPL4u+pvQuZp8CXal80Iy/VxFqWd0NBtuaHcLYlaGqrgG89aIXka1EfhDaZSsONAshl8',
+        offCode:'fM3SJ3B1jWm8332Ww3btwQMituSX3x9EFWvesok4JYBSXy9Fg2JHXWu6HkKSHDhhK2FKROLWFc14yqQi'
+      },
+      {
+        name: 'family_lr_fan',
+        displayName: 'Family Living Room Fan',
+        room: 'Family Living Room',
+        ipAddress: '192.168.0.152',
+        onCode: 'I3WiRtEq6QxfcQVcvdU3YefM+nohPALryGu0CdmAIhXckVODMWvQSfSS7WYDsPGM6PAoEtVd4SidUKYU',
+        offCode:'viiJxRKRG8RvPqasuug5ENtFuPDGYZ2aZewSBStz07yb18WalE7N77gSfubXdRGXIpqS6eJfmuhoxBt/'
+      },
+      {
+        name: 'dining_fan',
+        displayName: 'Dining Room Fan',
+        room: 'Dining Room',
+        ipAddress: '192.168.0.109',
+        onCode: '8kqh0xtRYxHVWjjbA0NQ+midIvwYuDUKTaOCGBF9MSgrys/CckUmVSjCSpm+SzX+MqY1HiQCQEDHOb6x',
+        offCode:'nLneZTXfaO5s7CPbi6yTs9vIzwC0RR9opoOwrizYoFXlF8sS98lbNTuVJIdoMgkjWAPI2Z+VZEWNsR+Y'
+      },
+
     ];
 
     // loop over the discovered devices and register each one if it has not already been registered
-    for (const device of exampleDevices) {
+    for (const device of fans) {
 
       // generate a unique id for the accessory this should be generated from
       // something globally unique, but constant, for example, the device serial
       // number or MAC address
-      const uuid = this.api.hap.uuid.generate(device.exampleUniqueId);
+      const uuid = this.api.hap.uuid.generate(device.name);
 
-      // see if an accessory with the same uuid has already been registered and restored from
-      // the cached devices we stored in the `configureAccessory` method above
       const existingAccessory = this.accessories.find(accessory => accessory.UUID === uuid);
 
       if (existingAccessory) {
@@ -87,18 +118,19 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
 
         // create the accessory handler for the restored accessory
         // this is imported from `platformAccessory.ts`
-        new ExamplePlatformAccessory(this, existingAccessory);
+        new AtombergPlatformAccessory(this, existingAccessory);
 
         // it is possible to remove platform accessories at any time using `api.unregisterPlatformAccessories`, eg.:
         // remove platform accessories when no longer present
         // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [existingAccessory]);
         // this.log.info('Removing existing accessory from cache:', existingAccessory.displayName);
       } else {
+
         // the accessory does not yet exist, so we need to create it
-        this.log.info('Adding new accessory:', device.exampleDisplayName);
+        this.log.info('Adding new accessory:', device.displayName);
 
         // create a new accessory
-        const accessory = new this.api.platformAccessory(device.exampleDisplayName, uuid);
+        const accessory = new this.api.platformAccessory(device.displayName, uuid);
 
         // store a copy of the device object in the `accessory.context`
         // the `context` property can be used to store any data about the accessory you may need
@@ -106,7 +138,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
 
         // create the accessory handler for the newly create accessory
         // this is imported from `platformAccessory.ts`
-        new ExamplePlatformAccessory(this, accessory);
+        new AtombergPlatformAccessory(this, accessory);
 
         // link the accessory to your platform
         this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);

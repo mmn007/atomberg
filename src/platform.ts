@@ -76,8 +76,8 @@ export class AtombergHomebridgePlatform implements DynamicPlatformPlugin {
         displayName: 'Master Bedroom Fan',
         room: 'Master Bedroom',
         ipAddress: '192.168.0.172',
-        onCode: 'qMcAkERzlz0czPL4u+pvQuZp8CXal80Iy/VxFqWd0NBtuaHcLYlaGqrgG89aIXka1EfhDaZSsONAshl8',
-        offCode:'fM3SJ3B1jWm8332Ww3btwQMituSX3x9EFWvesok4JYBSXy9Fg2JHXWu6HkKSHDhhK2FKROLWFc14yqQi'
+        onCode:'LDq3ylQ7WqCTYnB1SsJjZ3tqVAo5ISy4AiVEy/VtAy60LHn4VnCfGaPbtYFJFRcRA1nkIyg+fHTXhXE2',
+        offCode:'E2IJutPXeGXl9CvWean8exDGHs/tGsv1HSScvOC1n50SvrPdYEo3W6k51tjRmbNT5kKUWSPfbrEhqkbL'
       },
       {
         name: 'family_lr_fan',
@@ -94,6 +94,22 @@ export class AtombergHomebridgePlatform implements DynamicPlatformPlugin {
         ipAddress: '192.168.0.109',
         onCode: '8kqh0xtRYxHVWjjbA0NQ+midIvwYuDUKTaOCGBF9MSgrys/CckUmVSjCSpm+SzX+MqY1HiQCQEDHOb6x',
         offCode:'nLneZTXfaO5s7CPbi6yTs9vIzwC0RR9opoOwrizYoFXlF8sS98lbNTuVJIdoMgkjWAPI2Z+VZEWNsR+Y'
+      },
+      {
+        name: 'ikkuru_fan',
+        displayName: 'Ikkuru Bedroom Fan',
+        room: 'Ikkuru Bedroom',
+        ipAddress: '192.168.0.187',
+        onCode: 'vlXqIk84aO0g4De2Zxv9Ttt3BZCt413j0GxRiQvcGKpwx55P6Cfed+ygUvERPSz3WCssLULQor6fql3P',
+        offCode:'m3kQJ06zR1xzll4qPVAX4ZjkS6X4VwScwE38WrqmnWNOb6FWycgVZrc76DExxIWkgnxPC3HaSRF/kOLE'
+      },
+      {
+        name: 'guest_fan',
+        displayName: 'Guest Bedroom Fan',
+        room: 'Guest Bedroom',
+        ipAddress: '192.168.0.238',
+        onCode: 'X51JX2u82xpS6g1aTb95oyCmhLDR6jMU2q0uHn3v8ZG7CKknjbtT+nJXWjQe5wEYBn9rcd4pBEwAE0Ay',
+        offCode:'N446tZHNtQUgt1sC9aMIjsi9nPG1QNJ8nZDYv/tBUYHCF9wA95iBd5jmfqYdXLjJECZ9uYMooeqv8paO'
       },
 
     ];

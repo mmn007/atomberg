@@ -48,7 +48,7 @@ export class AtombergPlatformAccessory {
       .onSet(this.setActive.bind(this))                // SET - bind to the `setOn` method below
       .onGet(this.getActive.bind(this));               // GET - bind to the `getOn` method below
 
-    message = Buffer.from(this.accessory.context.device.offCode);
+    var message = Buffer.from(this.accessory.context.device.offCode);
     this.platform.log.info('Set Active for ', this.accessory.context.device.ipAddress, ' with ', message);
     const client = dgram.createSocket('udp4');
     client.send(message,0,message.length, 5600, this.accessory.context.device.ipAddress, (err) => {

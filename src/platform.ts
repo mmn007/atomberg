@@ -67,9 +67,9 @@ export class AtombergHomebridgePlatform implements DynamicPlatformPlugin {
         name: 'nonu_fan',
         displayName: 'Nonu Bedroom Fan',
         room: 'Nonu Bedroom',
-        ipAddress: '192.168.0.136',
-        onCode: 'Jmlu57pzGTgX9X3xbpZt6n2bmyTDdV4dDq2vCBW3WNBmzhdCSs8RWBsqiv0YyK2wf9lmLigyGDuudOu+',
-        offCode:'fM3SJ3B1jWm8332Ww3btwQMituSX3x9EFWvesok4JYBSXy9Fg2JHXWu6HkKSHDhhK2FKROLWFc14yqQi'
+        ipAddress: '192.168.0.233',
+        onCode: '8FgzoWuECoHGIx8E/yPVVpvbk+XoSpEC2FJ0kZHiV5tPEVNCPhlbkyCsTI5wX5MPX3i3mJukkvpTaksn',
+        offCode:'pSODtyx1OjzCFvYY5E90FLHbowQ/5Pc/E7D0xNkw9ytSGQETgWmzllp1WAvsEFOruNWFQuOlMnKkcdP3'
       },
       {
         name: 'master_br_fan',
